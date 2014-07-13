@@ -1,0 +1,20 @@
+#chart:before {
+	content: 'Regular chart';
+	font-weight: bold;
+}
+
+#chart div {
+	background: red;
+	margin-bottom: 5px;
+	text-align: right;
+	color: #fff;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 1;
+	padding: 10px;
+}
+
+#svg-chart:before {
+	content: 'SVG chart';
+	font-weight: bold;
+}

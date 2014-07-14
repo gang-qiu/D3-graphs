@@ -18,3 +18,11 @@
 	content: 'SVG chart';
 	font-weight: bold;
 }
+
+#svg-chart text {
+	stroke: #fff;
+}
+
+#svg-chart rect {
+	fill: red;
+}

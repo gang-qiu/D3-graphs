@@ -28,24 +28,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	bars.append('rect')
 		.attr({
 			'height': barHeight - 1,
-			'width':  function(d,i) {return scale(d);}
+			'width':  function(d) {return scale(d);}
 		})
 	
 	bars.append('text')
 		.attr({
-			'x': function(d,i) {return scale(d)-3;}
-			'y': barHeight/2.0 - 0.5;
+			'x':  function(d) {return scale(d) - 15;},
+			'y':  barHeight/2,
+			'dy': '.35em'
 		})
-
+		.text(function(d) {return d;})
 });
-
-/*
-<svg class="chart" width="420" height="120">
-  <g transform="translate(0,0)">
-    <rect width="40" height="19"></rect>
-    <text x="37" y="9.5" dy=".35em">4</text>
-  </g>
-</svg>
-*/
 
 })()

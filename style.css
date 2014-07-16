@@ -17,12 +17,17 @@
 #svg-chart:before {
 	content: 'SVG chart';
 	font-weight: bold;
+	border: 1px solid #000;
 }
 
 #svg-chart text {
-	stroke: #fff;
+	stroke: #000;
 }
 
 #svg-chart rect {
+	fill: steelblue;
+}
+
+#svg-chart rect:hover {
 	fill: red;
 }

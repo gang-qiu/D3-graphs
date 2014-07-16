@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	var scale = d3.scale.linear()
 		.domain([0, d3.max(data)])
-		.range([0, chartWidth])
+		.range([0, chartWidth]);
 
 	d3.select('#chart')
 		.selectAll('div')

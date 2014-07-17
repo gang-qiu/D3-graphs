@@ -31,3 +31,13 @@
 #svg-chart rect:hover {
 	fill: red;
 }
+
+.axis text {
+	font: 16px sans-serif;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rending: crispEdges;
+}

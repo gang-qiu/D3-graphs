@@ -1,26 +1,31 @@
-#chart:before {
-	content: 'Regular chart';
-	font-weight: bold;
+body div svg {
+	border: none;
+	padding: 0;
+	margin: 0;
 }
 
-#chart div {
-	background: red;
-	margin-bottom: 5px;
-	text-align: right;
-	color: #fff;
-	font-weight: bold;
-	font-size: 20px;
-	line-height: 1;
-	padding: 10px;
+svg {
+	background: lightgray;
+}
+
+#chart:before {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+#chart {
+	border: 1px solid red;
 }
 
 #svg-chart:before {
 	content: 'SVG chart';
 	font-weight: bold;
+	border: 1px solid red;
 }
 
 #svg-chart text {
-	stroke: #fff;
+	stroke: #000;
 }
 
 #svg-chart rect {

@@ -5,7 +5,7 @@ body div svg {
 }
 
 svg {
-	background: lightgray;
+	/*background: lightgray;*/
 }
 
 #chart:before {
@@ -30,4 +30,27 @@ svg {
 
 #svg-chart rect {
 	fill: red;
+}
+
+.axis text {
+	font: 18px sans-serif;
+	font-weight: lighter;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.hidden {
+	display: none;
+}
+
+.hidden:hover {
+	display: block !important;
+}
+
+.bar rect:hover {
+	fill: #000 !important;
 }

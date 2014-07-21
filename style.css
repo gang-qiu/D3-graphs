@@ -29,6 +29,10 @@ svg {
 }
 
 #svg-chart rect {
+	fill: steelblue;
+}
+
+#svg-chart rect:hover {
 	fill: red;
 }
 

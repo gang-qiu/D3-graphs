@@ -14,16 +14,6 @@ svg {
 	clear: both;
 }
 
-#chart {
-	border: 1px solid red;
-}
-
-#svg-chart:before {
-	content: 'SVG chart';
-	font-weight: bold;
-	border: 1px solid red;
-}
-
 #svg-chart text {
 	stroke: #000;
 }
@@ -57,4 +47,11 @@ svg {
 
 .bar rect:hover {
 	fill: #000 !important;
+}
+
+svg .watermark {
+	fill: #ddd;
+	stroke: #fff;
+	font: 50px sans-serif;
+	text-anchor
 }

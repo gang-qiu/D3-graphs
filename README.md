@@ -7,5 +7,5 @@ Adventures in D3.js!!
 * Bubble plot
 
 ## Features
-* ~~ quantitative & ordinal axes ~~
+* ~~quantitative & ordinal axes~~
 * smooth animated transitions

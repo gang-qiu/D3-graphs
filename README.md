@@ -6,7 +6,7 @@ D3 is a javascript library for generating highly interactive charts using web st
 For a demo, clone this repository and open 'index.html'.
 
 ![Bar Chart](https://s3.amazonaws.com/kevinqiu_net/images/Bar_chart.png)
-![Bubble Chart](https://s3.amazonaws.com/kevinqiu_net/images/Bar_chart.png)
+![Bubble Chart](https://s3.amazonaws.com/kevinqiu_net/images/bubble_chart.png)
 
 ## Charts
 * ~~Bar chart~~

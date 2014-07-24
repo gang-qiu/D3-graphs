@@ -14,15 +14,29 @@ svg {
 	clear: both;
 }
 
-#svg-chart text {
+svg .tick line {
+	stroke: #ccc;
+	stroke-dasharray: 5,5;
+}
+
+svg.svg-chart {
+	margin-bottom: 30px;
+}
+
+svg circle {
+	fill: none;
 	stroke: #000;
 }
 
-#svg-chart rect {
+.svg-chart text {
+	stroke: #000;
+}
+
+.svg-chart rect {
 	fill: steelblue;
 }
 
-#svg-chart rect:hover {
+.svg-chart rect:hover {
 	fill: red;
 }
 
@@ -41,17 +55,36 @@ svg {
 	display: none;
 }
 
-.hidden:hover {
+.legend {
+	stroke: #ccc
+}
+
+.legend circle {
+	fill: red;
+}
+
+g.bubble-group:hover text.hidden{
 	display: block !important;
+}
+
+.bubble:hover {
+	fill: red !important;
 }
 
 .bar rect:hover {
 	fill: #000 !important;
 }
 
+text {
+	font: 16px helvetica, sans-serif;
+}
+
 svg .watermark {
 	fill: #ddd;
-	stroke: #fff;
-	font: 50px sans-serif;
-	text-anchor
+	stroke: #ccc;
+	font-size: 50px;
+}
+
+.small {
+	font-size: 16px !important;
 }

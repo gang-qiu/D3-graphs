@@ -1,5 +1,3 @@
-// 2153274647 - dad
-
 (function(){document.addEventListener("DOMContentLoaded", function(event) {
 	var margin = {top: 80, bottom: 50, left: 50, right: 10};
 	var outerWidth = 600, outerHeight = 400, dataMax = 100;
@@ -37,13 +35,14 @@
         .orient('left')
 
     // chart element
-	var chart = d3.select('#svg-chart')
-		.attr({'width': outerWidth, 'height': outerHeight})
+	var chart = d3.select('#chart')
+        .append('svg')
+		.attr({'class': 'svg-chart', 'width': outerWidth, 'height': outerHeight})
 
     // define the `g` elements for the graph and 2 axes
     chart.append('g')
         .attr('transform', 'translate('+ margin.left +','+ margin.top +')')
-        .attr('id', 'graph')
+        .attr('id', 'bar-graph')
         .append('text')
             .text('BAR')
             .attr('x', innerWidth/2)
@@ -62,7 +61,7 @@
         .call(yAxis)
 
     // add a `g` element to set the position for each bar
-    d3.select('#graph').selectAll('.bar')
+    d3.select('#bar-graph').selectAll('.bar')
         .data(data)
         .enter()
 		.append('g')

@@ -8,41 +8,49 @@
 				cards.push({'pos': pos++, 'num': num, 'suit': suits[suit], 'color': color})
 			});
 		}
-		return cards
+		window._cards = cards;
 	}
 
-	var shuffle = function(cards) {
-		shuffledCards = [];
-		while (cards.length > 0) {
-			debugger
-			shuffledCards.push(cards.splice(Math.floor(Math.random() * (cards.length))))
+	var shuffleCards = function() {
+		var shuffledCards = [], nums = [];
+		for (var i=0; i<_cards.length; i++) {nums.push(i);}
+		while (nums.length > 0) {
+			var i = Math.floor(Math.random() * nums.length);
+			var j = nums.splice(i,1)[0];
+			shuffledCards.push(_cards[j]);
 		}
-		return shuffledCards;
+		_cards = shuffledCards;
 	}
-
-	console.log(shuffle(makeCards()))
 
 	var width = 400, height = 300, padding = 50;
-	var cards = makeCards();
 
 	d3.select('#cards')
-		.append('svg')
-			.attr('width', width + padding * 2)
-			.attr('height', height + padding * 2)
-		
-	svg = d3.select('#cards svg')
+	.append('svg')
+		.attr('width', width + padding * 2)
+		.attr('height', height + padding * 2)
+
+	var svg = d3.select('#cards svg');
+
+	function shuffle() {
+		shuffleCards();
+
+		svg.transition().duration(1000).selectAll('.card')
+			.attr('y', function(d,i) {return 20+i*20 + 'px';})
+	};
+
+	makeCards();
 
 	svg.append('g')		
 			.attr('transform', 'translate('+ padding +','+ padding +')')
 		.selectAll('text')
-		.data(cards)
+		.data(_cards)
 		.enter().append('text')
 			.attr('x', 0)
-			.attr('y', function(d,i) {return i*20+'px'})
-			.text(function(d){return d.suit + ' ' + d.num})
-			.style('stroke', function(d) {return d.color})
-			.style('fill', function(d) {return d.color})
+			.attr('y', function(d,i) {return i*20+'px';})
+			.attr('class', 'card')
+			.text(function(d){return d.suit + ' ' + d.num;})
+			.style('stroke', function(d) {return d.color;})
+			.style('fill', function(d) {return d.color;})
 
-
-
+	shuffle();
 })();

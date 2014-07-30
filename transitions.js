@@ -40,6 +40,13 @@
 			.attr('width', width + padding * 2)
 			.attr('height', height + padding * 2)
 
+    svg.append('text')
+            .text('Shuffle!')
+            .attr('x', width/2)
+            .attr('y', 40)
+            .attr('class', 'watermark')
+            .attr('text-anchor', 'middle')
+
 	// render the ordered cards list
 	var cardz = svg.append('g')		
 			.attr('transform', 'translate('+ padding +','+ padding +')')

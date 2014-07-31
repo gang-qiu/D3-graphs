@@ -88,3 +88,8 @@ svg .watermark {
 .small {
 	font-size: 16px !important;
 }
+
+svg .line {
+	stroke: #000;
+	fill: none;
+}

@@ -1,6 +1,6 @@
 (function(){
-	var width = 700, height = 300, padding = 50
-	var nums = ['A', 'J', 'Q', 'K']
+	var width = 700, height = 300, padding = 50;
+	var nums = ['A', 'J', 'Q', 'K'];
 	var suits = {'spade': '\u2660', 'heart': '\u2665', 'club':  '\u2663', 'diamond': '\u2666'};
 	var cards = orderedCards();
 

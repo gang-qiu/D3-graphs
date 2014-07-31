@@ -41,4 +41,11 @@
 			.attr('transform', function(d) {return 'rotate(20 '+ d.x +','+ d.y +')'})
 			.text(function(d) {return d.name;})
 
+	svg.append('text')
+            .text('Tree Plot!')
+            .attr('x', width/4)
+            .attr('y', 80)
+            .attr('class', 'watermark')
+            .attr('text-anchor', 'middle')
+
 })();

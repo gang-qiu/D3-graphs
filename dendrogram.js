@@ -59,13 +59,10 @@
             .attr('width', h + padding)
             .attr('height', h + padding);
 
-    var a = d3.scale.linear()
-        .domain([0, h])
-        .range([-Math.PI, 0])
-
-    var r = d3.scale.linear()
-        .domain([0, h])
-        .range([0, h/2])
+    var a = d3.scale.linear().domain([0, h]).range([-Math.PI, 0])
+    var r = d3.scale.linear().domain([0, h]).range([0, h/2])
+    var s = d3.scale.linear().domain([w/2, 0]).range([2, 35])
+    var z = function(x,y) {return Math.pow(Math.pow((x-cx),2) + Math.pow((y-cy),2), 0.5); }
 
     var ccx = function(d) {return r(d.y) * Math.cos(a(d.x))}
     var ccy = function(d) {return r(d.y) * Math.sin(a(d.x))}
@@ -95,7 +92,7 @@
         .enter().append('circle')
             .attr('cx', function(d) {return d.x;})
             .attr('cy', function(d) {return d.y;})            
-            .attr('r', 10)
+            .attr('r', function(d) {return s(z(d.x, d.y))})
             .style('fill', 'red')
 
     r_svg.append('text')

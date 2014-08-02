@@ -14,7 +14,7 @@
 	var shuffle = function(cards) {
 		shuffledCards = [];
 		while (cards.length > 0) {
-			debugger
+			
 			shuffledCards.push(cards.splice(Math.floor(Math.random() * (cards.length))))
 		}
 		return shuffledCards;

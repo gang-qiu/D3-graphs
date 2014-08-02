@@ -80,11 +80,31 @@ text {
 }
 
 svg .watermark {
-	fill: #ddd;
-	stroke: #ccc;
+	fill: #000;
+	stroke: #000;
 	font-size: 50px;
 }
 
 .small {
 	font-size: 16px !important;
+}
+
+svg .circle {
+	fill: red;
+	stroke: #000;
+}
+
+svg path {
+	fill: none;
+	stroke: #000;
+}
+
+#grouped-packing-plot .branch circle {
+	/*fill: #555;*/
+	/*opacity: 0.3;*/
+}
+
+#grouped-packing-plot .leaf circle {
+	fill: white;
+	/*opacity: 1;*/
 }

@@ -5,14 +5,19 @@ D3 is a javascript library for generating highly interactive charts using web st
 
 For a demo, clone this repository and open 'index.html'.
 
-![Bar Chart](https://s3.amazonaws.com/kevinqiu_net/images/Bar_chart.png)
+![Unsorted Aggregate](https://s3.amazonaws.com/kevinqiu_net/images/unsorted_aggregate.png)
+![Sorted Aggregate](https://s3.amazonaws.com/kevinqiu_net/images/sorted_aggregate.png)
+![Hierarchical Color](https://s3.amazonaws.com/kevinqiu_net/images/hierarchical_color.png)
+![Hierarchical](https://s3.amazonaws.com/kevinqiu_net/images/hierarchical_cluster.png)
 ![Bubble Chart](https://s3.amazonaws.com/kevinqiu_net/images/bubble_chart.png)
+![Bar Chart](https://s3.amazonaws.com/kevinqiu_net/images/Bar_chart.png)
 
 ## Charts
 * ~~Bar chart~~
 * ~~Bubble chart~~
 * Scatter plot
 * Geographic plot
+* Sphere-packing plots
 
 ## Features
 * ~~quantitative & ordinal axes~~

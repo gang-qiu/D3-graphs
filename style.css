@@ -79,6 +79,8 @@ text {
 	font: 16px helvetica, sans-serif;
 }
 
+
+
 svg .watermark {
 	fill: #000;
 	stroke: #000;
@@ -107,4 +109,7 @@ svg path {
 #grouped-packing-plot .leaf circle {
 	fill: white;
 	/*opacity: 1;*/
+svg .line {
+	stroke: #000;
+	fill: none;
 }

@@ -109,7 +109,18 @@ svg path {
 #grouped-packing-plot .leaf circle {
 	fill: white;
 	/*opacity: 1;*/
+}
 svg .line {
 	stroke: #000;
 	fill: none;
+}
+
+svg .branch {
+	stroke: #555;
+	fill: #bbb;
+}
+
+svg .leaf {
+	stroke: green;
+	fill: lightgreen;
 }

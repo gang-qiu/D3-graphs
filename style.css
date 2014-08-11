@@ -120,7 +120,20 @@ svg .branch {
 	fill: #bbb;
 }
 
-svg .leaf {
-	stroke: green;
+svg .node {
+	stroke: red;
+	fill: pink;
+}
+
+svg .new {
+	stroke: darkgreen;
 	fill: lightgreen;
 }
+
+#force-plot button {
+	font-size: 24px;
+	padding: 5px 30px;
+}
+
+* {font-family: sans-serif;}
+

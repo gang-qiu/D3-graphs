@@ -3,7 +3,9 @@ Adventures in D3.js!!
 
 D3 is a javascript library for generating highly interactive charts using web standards. 
 
-For a demo, clone this repository and open 'index.html'.
+For a demo, [Click here!](https://kevin-qiu.github.io/)
+
+Or clone this repository and open 'index.html'.
 
 ## Charts
 * ~~Bar chart~~
@@ -11,14 +13,15 @@ For a demo, clone this repository and open 'index.html'.
 * ~~Tree plot (Dendrogram)~~
 * ~~Radial Tree plot~~
 * ~~Cluster Plot~~
-* Force Plots
+* ~~Force Plots~~
+* collapsible nodes for force / cluster / trees
 
 ## Features
 * ~~quantitative & ordinal axes~~
 * ~~smooth animated transitions~~
 * Path traceback with tree plot
-* tree node collapsing
 
+![Force Plot](https://s3.amazonaws.com/kevinqiu_net/images/force_plot.gif)
 ![Hierarchical](https://s3.amazonaws.com/kevinqiu_net/images/hierarchical_cluster.png)
 ![Hierarchical Color](https://s3.amazonaws.com/kevinqiu_net/images/hierarchical_color.png)
 ![Sorted Aggregate](https://s3.amazonaws.com/kevinqiu_net/images/sorted_aggregate.png)

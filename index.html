@@ -5,11 +5,24 @@
 	<link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
+	<header>
+		<h1>Kevin's D3 Gallery</h1>
+		<a href="https://github.com/kevin-qiu/D3_graphs">Source</a>
+		<hr>
+	</header>
 	<div id="force-plot">
 		<header>
-			# Columns <span id="totalCols"></span>
-			<button onClick="changeCols(+1)">More</button>
-			<button onClick="changeCols(-1)">Less</button>
+		<strong style="font-size: 50px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Force Plot!!</strong><br>
+			<button onClick="addNodes(+10)">Add 10 nodes</button>
+			<button onClick="addNodes(-10)">Remove 10 nodes</button>
+			(# Nodes <span id="totalNodes"></span>)	
+			<br>
+			<button onClick="changeCols(+1)">More Columns</button>
+			<button onClick="changeCols(-1)">Less Columns</button>
+			(# Columns <span id="totalCols"></span>)
+			<br>
+			<button onClick="shake()">Shake!</button>
+			<small>(Click on nodes to drag and drop them)</small>
 		</header>
 	</div>
 	<div id="grouped-packing-plot"></div>

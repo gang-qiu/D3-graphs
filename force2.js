@@ -20,6 +20,14 @@ sizeChoice  = 'severity';
 // 	d3.select('#totalNodes').text(nodes.length)
 // }
 
+var incidents = {
+	severity: [1,2,3,4,5],
+	type: ['Zendesk', 'Twitter', 'Dispatch', 'Calendar'],
+	days: [1,2,3,4,5],
+	assignee: ['Davon', 'Athena', 'Diana', 'Katelyn', 'Clayton', 'David', 'Eric', 'Unassigned'],
+	message: ['Lorem ipsum dolor sit amet', 'Consectetur adipisicing elit', 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua']
+};
+
 var nodesInit = generateIncidents(numNodes),
     colorScale = d3.scale.category10();
 
@@ -103,8 +111,8 @@ window.shake = function() {
 
 window.colorCat = function(color) {
 	colorChoice = color.value;
-	console.log(colorChoice)
 	restart();
+	updateColorLegend();
 	node.transition()
 		.duration(1000)
 		.style('fill', function(d) {return colorScale(d[colorChoice])})
@@ -155,13 +163,6 @@ function randomIncident() {
 }
 
 function randomAttr(incidentAttr) {
-	var incidents = {
-		severity: [1,2,3,5],
-		type: ['Zendesk', 'Twitter', 'Dispatch', 'Calendar'],
-		days: [1,2,3,4,5],
-		assignee: ['Davon', 'Athena', 'Diana', 'Katelyn', 'Clayton', 'David', 'Eric', 'Unassigned'],
-		message: ['Lorem ipsum dolor sit amet', 'Consectetur adipisicing elit', 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua']
-	};
 	var incident = incidents[incidentAttr];
 	return incident[parseInt(Math.random()*incident.length)];
 }
@@ -169,4 +170,19 @@ function randomAttr(incidentAttr) {
 function r(dataNode) {
 	return dataNode[sizeChoice]*nodeSize;
 }
+
+function updateColorLegend() {
+	d3.select('#force2-plot fieldset').remove()
+	var legend = d3.select('#force2-plot div.clearfix').append('fieldset')
+
+	legend.append('legend').text('Colors: '+ colorChoice)
+	var items = incidents[colorChoice];
+	var item = legend.selectAll('p')
+		.data(items)
+		.enter().append('p')
+
+	item.insert('span').attr('class', 'legend-item').style('background-color', function(d) {return colorScale(d)})
+	item.append('span').text(function(d) {return d})
+}
+
 })();

@@ -139,4 +139,23 @@ svg .new {
 
 #options-table {
 	text-align: center;
+	float: left;
+}
+
+#force2-plot fieldset {
+	border: 1px solid black;
+	display: inline-block;
+	float: right;
+}
+
+.clearfix {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.legend-item {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
 }

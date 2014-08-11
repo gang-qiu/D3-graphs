@@ -1,7 +1,7 @@
 (function(){
 var width = 1000,
 height = 500,
-padding = 20,
+padding = 100,
 numNodes = 50,
 nodeSize = 10,
 nodeSizeMin = 5,
@@ -52,7 +52,6 @@ svg.style('opacity', 1e-6)
 		.style('opacity', 1);
 
 restart();
-console.log(nodes)
 
 //---------------------
 
@@ -114,8 +113,7 @@ window.colorCat = function(color) {
 
 window.groupCat = function(group) {
 	groupChoice = group.value;
-	console.log(groupChoice)
-	updateGroups();
+	updateColumnNames();
 	restart();
 }
 
@@ -185,22 +183,32 @@ function updateColorLegend() {
 	item.append('span').text(function(d) {return '     '+ d})
 };
 
-function oScale(group) {
-	return d3.scale.ordinal()
-		.domain(group)	
-		.rangePoints([-spacing, spacing])
-};
+function updateColumnNames() {
+	var o = d3.scale.ordinal()
+			.domain(incidents[groupChoice])	
+			.rangePoints([0, width-padding], 1.0);
 
-function updateGroups() {
+	svg.selectAll('text').remove();
+
+	svg.selectAll('text')
+		.data(incidents[groupChoice])
+		.enter().append('text')
+			.attr('class', 'column-name')
+			.attr('x', function(d) {return o(d);})
+			.attr('y', 25)
+			.text(function(d) {return d;})
+
+	incidents[groupChoice].forEach(function(i) {
+		console.log(o(i))
+	})
 	
-	// incidents[groupChoice].forEach(function(i) {
-	// 	console.log(o(i))
-	// })
 };
 
 function setColumns(dataNode, event) {
 	if (groupChoice) {
-		var o = oScale(incidents[groupChoice]);
+		var o = d3.scale.ordinal()
+			.domain(incidents[groupChoice])	
+			.rangePoints([-spacing, spacing]);
 		dataNode.x += event.alpha * o(dataNode[groupChoice])
 	}
 };

@@ -159,3 +159,8 @@ svg .new {
 	width: 20px;
 	height: 20px;
 }
+
+.column-name {
+	font-size: 30px;
+	fill: #555;
+}

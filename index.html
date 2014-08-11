@@ -12,7 +12,36 @@
 	</header>
 	<div id="force2-plot">
 		<header>
-			<strong style="font-size: 50px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Force Plot with Categories!!</strong><br>
+			<strong style="font-size: 50px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Categorical Force Plot!!</strong><br>
+			<button onClick="shake()">Shake!</button>
+			<table id="options-table">
+				<tr>
+					<th></th>
+					<th>Severity</th>
+					<th>Days Unresolved</th>
+					<th>Type</th>
+					<th>Assignee</th>
+				</tr>
+				<tr>
+					<th>Group By</th>
+					<td><input onClick="groupCat(this)" type="radio" name="group" value="severity"></td>
+					<td><input onClick="groupCat(this)" type="radio" name="group" value="days"></td>
+					<td><input onClick="groupCat(this)" type="radio" name="group" value="type"></td>
+					<td><input onClick="groupCat(this)" type="radio" name="group" value="assignee"></td>
+				</tr>
+				<tr>
+					<th>Color By</th>
+					<td><input onClick="colorCat(this)" type="radio" name="color" value="severity"></td>
+					<td><input onClick="colorCat(this)" type="radio" name="color" value="days"></td>
+					<td><input onClick="colorCat(this)" type="radio" name="color" value="type"></td>
+					<td><input onClick="colorCat(this)" type="radio" name="color" value="assignee"></td>
+				</tr>
+				<tr>
+					<th>Size By</th>
+					<td><input onClick="sizeCat(this)" type="radio" name="size" value="severity" checked></td>
+					<td><input onClick="sizeCat(this)" type="radio" name="size" value="days"></td>
+				</tr>
+			</table>
 		</header>
 	</div>
 	<div id="force-plot">

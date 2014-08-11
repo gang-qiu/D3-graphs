@@ -121,7 +121,7 @@ svg .branch {
 }
 
 svg .node {
-	stroke: red;
+	stroke: #000;
 	fill: pink;
 }
 
@@ -137,3 +137,6 @@ svg .new {
 
 * {font-family: sans-serif;}
 
+#options-table {
+	text-align: center;
+}

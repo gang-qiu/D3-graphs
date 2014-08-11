@@ -3,11 +3,14 @@ var width = 1000,
 height = 500,
 padding = 20,
 numNodes = 50,
-nodeSize = 15,
+nodeSize = 10,
 nodeSizeMin = 5,
-bins = 2,
+bins = 1,
 spacing = 20,
-shakeVel = 30;
+shakeVel = 30,
+groupChoice = null,
+colorChoice = null,
+sizeChoice  = 'severity';
 
 // window.reportCols = function() {
 // 	d3.select('#totalCols').text(bins)
@@ -16,23 +19,24 @@ shakeVel = 30;
 // window.reportNodes = function() {
 // 	d3.select('#totalNodes').text(nodes.length)
 // }
-	
+
+var nodesInit = generateIncidents(numNodes),
+    colorScale = d3.scale.category10();
+
 var svg = d3.select('#force2-plot')
 	.append('svg')
 		.attr('width', width)
 		.attr('height', height)
 		.style('border', '1px solid #000')
 
-var nodesInit = d3.range(numNodes).map(function(i) {return {size: randSize()};});
-
 var force = d3.layout.force()
 	.size([width, height])
 	.on('tick', tick)
 	.nodes(nodesInit)
-	.charge(function(d) {return -d.size*2;})
+	.charge(function(d) {return -r(d)*r(d)/8;})
 
 var node = svg.selectAll(".node"),
-	nodes = force.nodes();
+	nodes = force.nodes()
 
 svg.style('opacity', 1e-6)
 	.transition()
@@ -40,7 +44,7 @@ svg.style('opacity', 1e-6)
 		.style('opacity', 1);
 
 restart();
-reportCols();
+console.log(nodes)
 
 //---------------------
 
@@ -70,15 +74,11 @@ function group(i, range, bins) {
 }
 
 function bound(d) {
-	if ((d.x+d.size) > width)  d.x = width - d.size;
-	else if ((d.x-d.size) < 0) d.x = d.size;
+	if ((d.x+r(d)) > width)  d.x = width - r(d);
+	else if ((d.x-r(d)) < 0) d.x = r(d);
 
-	if ((d.y+d.size) > height)  d.y = height - d.size;
-	else if ((d.y-d.size) < 0) d.y = d.size;
-}
-
-function randSize() {
-	return Math.random()*nodeSize + nodeSizeMin;
+	if ((d.y+r(d)) > height)  d.y = height - r(d);
+	else if ((d.y-r(d)) < 0) d.y = r(d);
 }
 
 var columns = function() {
@@ -101,15 +101,25 @@ window.shake = function() {
 	force.resume();
 }
 
-window.addNodes = function(amt) {
-	if (amt > 0) {
-		for (var i=0; i<amt; i++) {
-			nodes.push({size: randSize()});
-		}
-	}
-	else nodes.splice(Math.max(nodes.length+amt-1, 0), -amt);
-
+window.colorCat = function(color) {
+	colorChoice = color.value;
+	console.log(colorChoice)
 	restart();
+	node.transition()
+		.duration(1000)
+		.style('fill', function(d) {return colorScale(d[colorChoice])})
+}
+
+window.groupCat = function(group) {
+	console.log(group)
+}
+
+window.sizeCat = function(size) {
+	sizeChoice = size.value;
+	restart();
+	node.transition()
+		.duration(1000)
+		.attr('r', function(d) {return r(d)})
 }
 
 function restart() {
@@ -119,7 +129,7 @@ function restart() {
 
 	node.enter().append("circle")
 		.attr("class", "node")
-		.attr("r", function(d) {return d.size;})
+		.attr("r", function(d) {return r(d);})
 		.call(force.drag);
 
 	force.start();
@@ -136,9 +146,9 @@ function generateIncidents(numIncidents) {
 
 function randomIncident() {
 	return {
-		severity: randomAttr('severity'),
+		severity: randomAttr('severity'), 
 		type: randomAttr('type'),
-		dateCreated: randomAttr('dateCreated'),
+		days: randomAttr('days'),
 		assignee: randomAttr('assignee'),
 		message: randomAttr('message')
 	}
@@ -146,19 +156,17 @@ function randomIncident() {
 
 function randomAttr(incidentAttr) {
 	var incidents = {
-		severity: [1,2,3,4],
+		severity: [1,2,3,5],
 		type: ['Zendesk', 'Twitter', 'Dispatch', 'Calendar'],
-		dateCreated: [
-			'01-02-2014', '01-03-2014', '01-04-2014', '01-05-2014', '01-06-2014', '01-07-2014',
-			'02-02-2014', '02-03-2014', '02-04-2014', '02-05-2014', '02-06-2014', '02-07-2014',
-			'03-02-2014', '03-03-2014', '03-04-2014', '03-05-2014', '03-06-2014', '03-07-2014',
-			'04-02-2014', '04-03-2014', '04-04-2014', '04-05-2014', '04-06-2014', '04-07-2014'
-		],
+		days: [1,2,3,4,5],
 		assignee: ['Davon', 'Athena', 'Diana', 'Katelyn', 'Clayton', 'David', 'Eric', 'Unassigned'],
 		message: ['Lorem ipsum dolor sit amet', 'Consectetur adipisicing elit', 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua']
 	};
 	var incident = incidents[incidentAttr];
 	return incident[parseInt(Math.random()*incident.length)];
 }
-debugger
+
+function r(dataNode) {
+	return dataNode[sizeChoice]*nodeSize;
+}
 })();

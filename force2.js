@@ -3,9 +3,8 @@ var width = 1000,
 height = 500,
 padding = 100,
 numNodes = 50,
-nodeSize = 10,
-nodeSizeMin = 5,
-bins = 1,
+nodeSizeMax = 50,
+nodeSizeMin = 10,
 spacing = 20,
 shakeVel = 30,
 groupChoice = null,
@@ -133,6 +132,7 @@ function restart() {
 	node.enter().append("circle")
 		.attr("class", "node")
 		.attr("r", function(d) {return r(d);})
+		.on('mousedown', showIncidentDetails)
 		.call(force.drag);
 
 	force.start();
@@ -163,7 +163,9 @@ function randomAttr(incidentAttr) {
 }
 
 function r(dataNode) {
-	return dataNode[sizeChoice]*nodeSize;
+	var data = incidents[sizeChoice]
+	var l = d3.scale.pow().domain([d3.min(data), d3.max(data)]).range([nodeSizeMin, nodeSizeMax]);
+	return l(dataNode[sizeChoice]);
 }
 
 function updateColorLegend() {
@@ -212,5 +214,15 @@ function setColumns(dataNode, event) {
 		dataNode.x += event.alpha * o(dataNode[groupChoice])
 	}
 };
+
+function showIncidentDetails(d) {
+	d3.selectAll('#blurb li').remove();
+	d3.select('#blurb ul')
+		.append('li').text('Severity: '+ d.severity)
+		.append('li').text('Days Unresolved: '+ d.days)
+		.append('li').text('Type: '+ d.type)
+		.append('li').text('assignee: '+ d.assignee)
+		.append('li').text('Details: '+ d.message)
+}
 
 })()

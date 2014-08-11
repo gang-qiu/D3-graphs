@@ -14,6 +14,7 @@ Or clone this repository and open 'index.html'.
 * ~~Radial Tree plot~~
 * ~~Cluster Plot~~
 * ~~Force Plots~~
+* ~~Categorical Force Plot~~
 * collapsible nodes for force / cluster / trees
 
 ## Features
@@ -21,6 +22,7 @@ Or clone this repository and open 'index.html'.
 * ~~smooth animated transitions~~
 * Path traceback with tree plot
 
+![Categorical Force Plot](https://s3.amazonaws.com/kevinqiu_net/images/force_plot_category.gif)
 ![Force Plot](https://s3.amazonaws.com/kevinqiu_net/images/force_plot.gif)
 ![Hierarchical](https://s3.amazonaws.com/kevinqiu_net/images/hierarchical_cluster.png)
 ![Hierarchical Color](https://s3.amazonaws.com/kevinqiu_net/images/hierarchical_color.png)

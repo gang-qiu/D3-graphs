@@ -145,7 +145,8 @@ svg .new {
 #force2-plot fieldset {
 	border: 1px solid black;
 	display: inline-block;
-	float: right;
+	float: left;
+	margin-left: 30px
 }
 
 .clearfix {
@@ -163,6 +164,9 @@ svg .new {
 .column-name {
 	font-size: 30px;
 	fill: #555;
+
 }
 
 ul {list-style: none; padding: 10px 0; margin: 0;}
+fieldset > p {padding: 0 10px 0 0; margin: 0; float: left;}
+fieldset {max-width: 300px;}

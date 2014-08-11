@@ -20,9 +20,9 @@ sizeChoice  = 'severity';
 // }
 
 var incidents = {
-	severity: [1,2,3,4,5],
+	severity: [1,2,4,8],
 	type: ['Zendesk', 'Twitter', 'Dispatch', 'Calendar'],
-	days: [1,2,3,4,5],
+	days: [1,2,4,7,11],
 	assignee: ['Davon', 'Athena', 'Diana', 'Katelyn', 'Clayton', 'Unassigned'],
 	message: ['Lorem ipsum dolor sit amet', 'Consectetur adipisicing elit', 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua']
 };
@@ -188,7 +188,7 @@ function updateColorLegend() {
 function updateColumnNames() {
 	var o = d3.scale.ordinal()
 			.domain(incidents[groupChoice])	
-			.rangePoints([0, width-padding], 1.0);
+			.rangePoints([0, width], 1.0);
 
 	svg.selectAll('text').remove();
 
@@ -198,6 +198,7 @@ function updateColumnNames() {
 			.attr('class', 'column-name')
 			.attr('x', function(d) {return o(d);})
 			.attr('y', 25)
+			.attr('text-anchor', 'middle')
 			.text(function(d) {return d;})
 
 	incidents[groupChoice].forEach(function(i) {

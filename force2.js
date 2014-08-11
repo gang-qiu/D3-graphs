@@ -24,7 +24,7 @@ var incidents = {
 	severity: [1,2,3,4,5],
 	type: ['Zendesk', 'Twitter', 'Dispatch', 'Calendar'],
 	days: [1,2,3,4,5],
-	assignee: ['Davon', 'Athena', 'Diana', 'Katelyn', 'Clayton', 'David', 'Eric', 'Unassigned'],
+	assignee: ['Davon', 'Athena', 'Diana', 'Katelyn', 'Clayton', 'Unassigned'],
 	message: ['Lorem ipsum dolor sit amet', 'Consectetur adipisicing elit', 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua']
 };
 
@@ -58,7 +58,7 @@ console.log(nodes)
 
 function tick(e) {
 	nodes.forEach(function(n,i) {
-		n.x += group(i,[-spacing, spacing], bins)*e.alpha;
+		setColumns(n, e);
 		bound(n);
 	});
 
@@ -66,20 +66,20 @@ function tick(e) {
 		.attr('cy', function(d) {return d.y})
 }
 
-function group(i, range, bins) {
-	// returns a discrete mapping of `bins` parts over `range` values for `i` elements
-	// group (0,[-20, 20], 5) -> -20
-	// group (1,[-20, 20], 5) -> -10
-	// group (2,[-20, 20], 5) ->   0
-	// group (3,[-20, 20], 5) ->  10
-	// group (4,[-20, 20], 5) ->  20
+// function group(i, range, bins) {
+// 	// returns a discrete mapping of `bins` parts over `range` values for `i` elements
+// 	// group (0,[-20, 20], 5) -> -20
+// 	// group (1,[-20, 20], 5) -> -10
+// 	// group (2,[-20, 20], 5) ->   0
+// 	// group (3,[-20, 20], 5) ->  10
+// 	// group (4,[-20, 20], 5) ->  20
 
-	if (bins <= 1) return 0;
-	var span  = range[1] - range[0];
-	var bin   = i % bins;
-	var space = span / (bins - 1);
-	return bin * space + range[0];
-}
+// 	if (bins <= 1) return 0;
+// 	var span  = range[1] - range[0];
+// 	var bin   = i % bins;
+// 	var space = span / (bins - 1);
+// 	return bin * space + range[0];
+// }
 
 function bound(d) {
 	if ((d.x+r(d)) > width)  d.x = width - r(d);
@@ -94,12 +94,6 @@ var columns = function() {
 }
 
 //--------------
-
-window.changeCols = function(num) {
-	bins += ((bins + num) < 1 ? 0 : num);
-	force.resume();
-	// reportCols();
-}
 
 window.shake = function() {
 	nodes.forEach(function(n) {
@@ -119,7 +113,10 @@ window.colorCat = function(color) {
 }
 
 window.groupCat = function(group) {
-	console.log(group)
+	groupChoice = group.value;
+	console.log(groupChoice)
+	updateGroups();
+	restart();
 }
 
 window.sizeCat = function(size) {
@@ -181,8 +178,31 @@ function updateColorLegend() {
 		.data(items)
 		.enter().append('p')
 
-	item.insert('span').attr('class', 'legend-item').style('background-color', function(d) {return colorScale(d)})
-	item.append('span').text(function(d) {return d})
-}
+	item.insert('span')
+		.attr('class', 'legend-item')
+		.style('background-color', function(d) {return colorScale(d)})
 
-})();
+	item.append('span').text(function(d) {return '     '+ d})
+};
+
+function oScale(group) {
+	return d3.scale.ordinal()
+		.domain(group)	
+		.rangePoints([-spacing, spacing])
+};
+
+function updateGroups() {
+	
+	// incidents[groupChoice].forEach(function(i) {
+	// 	console.log(o(i))
+	// })
+};
+
+function setColumns(dataNode, event) {
+	if (groupChoice) {
+		var o = oScale(incidents[groupChoice]);
+		dataNode.x += event.alpha * o(dataNode[groupChoice])
+	}
+};
+
+})()

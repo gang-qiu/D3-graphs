@@ -155,9 +155,8 @@ svg .new {
 	clear: both;
 }
 
-#text-string {
-	min-width: 300px;
-	padding-left: 20px;
+#circle-plot-container {
+	min-width: 1500px;
 }
 
 .pull-left {

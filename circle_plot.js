@@ -45,8 +45,6 @@
 		.attr('transform', function(d) {return 'translate('+ x(d.x) +','+ y(d.y) +')';})
 
 	circles.append('circle')
-		// .attr('cx', function(d) {return x(d.x)})
-		// .attr('cy', function(d) {return y(d.y)})
 		.attr('r',  function(d) {return r(d.r)})
 
 	///////////// vendors //////////
@@ -57,9 +55,7 @@
 		.attr('transform', function(d) {return 'translate('+ x(d.x) +','+ y(d.y) +')';})
 
 	vendors.append('circle')
-		// .attr('cx', function(d) {return x(d.x)})
-		// .attr('cy', function(d) {return y(d.y)})
-		.attr('r',  function(d) {return r(2)})
+		.attr('r', r(2))
 
 	vendors.append('text')
 		.attr('x', 10)
@@ -74,8 +70,8 @@
 		.attr('transform', function(d) {return 'translate('+ x(d.x) +','+ y(d.y) +')';})
 
 	trucks.append('rect')
-		.attr('width',  function(d) {return x(3)})
-		.attr('height',  function(d) {return y(3)})
+		.attr('width', x(3))
+		.attr('height', y(3))
 
 	trucks.append('text')
 		.attr('x', -5)
@@ -88,19 +84,15 @@
 		.scale(x)
 		.orient('top')
 		.ticks(5)
-		.innerTickSize(-(innerWidth + axisMargin*2))
+		.innerTickSize(-innerHeight)
 		.tickPadding(10)
 
-	svg.append('g')
-		.attr('transform', 'translate('+ margin.left +','+ (margin.top) +')')
-		.attr('class', 'x axis')
-		.call(xAxis)
 
 	var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient('left')
 		.ticks(5)
-		.innerTickSize(-(innerWidth + axisMargin*2))
+		.innerTickSize(-innerWidth)
 		.tickPadding(10)
 
 	svg.append('g')
@@ -108,6 +100,11 @@
 		.attr('class', 'y axis')
 		.call(yAxis)
 
+	svg.append('g')
+		.attr('transform', 'translate('+ margin.left +','+ margin.top +')')
+		.attr('class', 'x axis')
+		.call(xAxis)
+		
 	// add super cool title to the chart
 	svg.append('g')
 		.attr('transform', 'translate('+ margin.left/4 +','+ margin.top/2 +')')

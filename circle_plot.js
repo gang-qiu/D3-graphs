@@ -1,6 +1,6 @@
 (function(){document.addEventListener("DOMContentLoaded", function(event) {
 
-	var margin = {top: 100, bottom: 50, left: 50, right: 50};
+	var margin = {top: 100, bottom: 50, left: 100, right: 50};
 	var outerWidth = 700, outerHeight = 700;
 	var innerWidth = outerWidth - margin.left - margin.right;
 	var innerHeight = outerHeight - margin.top - margin.bottom;
@@ -70,8 +70,10 @@
 		.attr('transform', function(d) {return 'translate('+ x(d.x) +','+ y(d.y) +')';})
 
 	trucks.append('rect')
-		.attr('width', x(3))
-		.attr('height', y(3))
+		.attr('x', -5)
+		.attr('y', -5)
+		.attr('width', 10)
+		.attr('height', 10)
 
 	trucks.append('text')
 		.attr('x', -5)
@@ -104,7 +106,7 @@
 		.attr('transform', 'translate('+ margin.left +','+ margin.top +')')
 		.attr('class', 'x axis')
 		.call(xAxis)
-		
+
 	// add super cool title to the chart
 	svg.append('g')
 		.attr('transform', 'translate('+ margin.left/4 +','+ margin.top/2 +')')

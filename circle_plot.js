@@ -1,7 +1,7 @@
 (function(){document.addEventListener("DOMContentLoaded", function(event) {
 
-	var margin = {top: 100, bottom: 100, left: 100, right: 100};
-	var outerWidth = 800, outerHeight = 800;
+	var margin = {top: 100, bottom: 50, left: 50, right: 50};
+	var outerWidth = 700, outerHeight = 700;
 	var innerWidth = outerWidth - margin.left - margin.right;
 	var innerHeight = outerHeight - margin.top - margin.bottom;
 	var xMax = 150,
@@ -119,7 +119,10 @@
             .attr('text-anchor', 'middle')
             .style('fill', '#ddd')
 
-
+	// add string
+	d3.select('#text-string')
+		.html(json.string)
 	})
+
 	
 })})()

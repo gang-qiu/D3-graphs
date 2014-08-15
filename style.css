@@ -4,9 +4,9 @@ body div svg {
 	margin: 0;
 }
 
-svg {
-	/*background: lightgray;*/
-}
+.bg {background-color: lightgray; }
+
+.border {border: 1px solid #000;}
 
 #chart:before {
 	content: '';
@@ -170,3 +170,7 @@ svg .new {
 ul {list-style: none; padding: 10px 0; margin: 0;}
 fieldset > p {padding: 0 10px 0 0; margin: 0; float: left;}
 fieldset {max-width: 300px;}
+
+.circle-group circle  {stroke: #000;}
+.vendor-group circle {stroke: red; fill: red;}
+.truck-group  rect {stroke: green; fill: green;}

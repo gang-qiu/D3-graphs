@@ -45,8 +45,8 @@
 		.attr('transform', function(d) {return 'translate('+ x(d.x) +','+ y(d.y) +')';})
 
 	circles.append('circle')
-		.attr('cx', function(d) {return x(d.x)})
-		.attr('cy', function(d) {return y(d.y)})
+		// .attr('cx', function(d) {return x(d.x)})
+		// .attr('cy', function(d) {return y(d.y)})
 		.attr('r',  function(d) {return r(d.r)})
 
 	///////////// vendors //////////
@@ -57,13 +57,13 @@
 		.attr('transform', function(d) {return 'translate('+ x(d.x) +','+ y(d.y) +')';})
 
 	vendors.append('circle')
-		.attr('cx', function(d) {return x(d.x)})
-		.attr('cy', function(d) {return y(d.y)})
+		// .attr('cx', function(d) {return x(d.x)})
+		// .attr('cy', function(d) {return y(d.y)})
 		.attr('r',  function(d) {return r(2)})
 
 	vendors.append('text')
-		.attr('x', function(d) {return x(d.x) + 10})
-		.attr('y', function(d) {return x(d.y) + 10})
+		.attr('x', 10)
+		.attr('y', 10)
 		.text(function(d) {return d.name})
 
 	///////////// trucks //////////
@@ -86,13 +86,13 @@
 	// add axes to chart
 	var xAxis = d3.svg.axis()
 		.scale(x)
-		.orient('bottom')
+		.orient('top')
 		.ticks(5)
 		.innerTickSize(-(innerWidth + axisMargin*2))
 		.tickPadding(10)
 
 	svg.append('g')
-		.attr('transform', 'translate('+ margin.left +','+ (margin.top + innerHeight + axisMargin) +')')
+		.attr('transform', 'translate('+ margin.left +','+ (margin.top) +')')
 		.attr('class', 'x axis')
 		.call(xAxis)
 

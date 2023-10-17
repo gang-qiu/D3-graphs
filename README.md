@@ -24,6 +24,7 @@ Or clone this repository and open 'index.html'.
 
 ![Categorical Force Plot](https://s3.amazonaws.com/kevinqiu_net/images/force_plot_category.gif)
 ![Force Plot](https://s3.amazonaws.com/kevinqiu_net/images/force_plot.gif)
+![Force Plot 3](https://github.com/gang-qiu/D3-graphs/assets/5148889/ee5def41-e911-49c1-bc8e-ab28ffc5e993)
 ![Hierarchical](https://s3.amazonaws.com/kevinqiu_net/images/hierarchical_cluster.png)
 ![Hierarchical Color](https://s3.amazonaws.com/kevinqiu_net/images/hierarchical_color.png)
 ![Sorted Aggregate](https://s3.amazonaws.com/kevinqiu_net/images/sorted_aggregate.png)
